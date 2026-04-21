@@ -116,7 +116,10 @@ Asked Claude to update the README to reflect Assignment 4's additions.
 ## Summarizing prompts
 
 I also asked Claude to summarize all the prompts I used during the sessions to assist me with accurate reporting in this file
----
+
+
+***
+
 
 ## Overall reflection
 
