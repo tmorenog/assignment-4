@@ -8,6 +8,7 @@ const logger = require("morgan");
 
 const indexRouter = require("./routes/index");
 const meetingsRouter = require("./routes/meetings");
+const apiMeetingsRouter = require("./routes/api/api-meetings");
 
 // Adds mongoose connection to MongoDB using the URI from environment variables
 const mongoose = require("mongoose");
@@ -17,14 +18,6 @@ mongoose.connect(process.env.MONGODB_URI)
 
 const app = express();
 
-// For assignment 4, require our new api router module
-const apimeetings = require('./routes/api/api-meetings');
-
-// install it as middleware
-app.use('/api/meetings', apimeetings);
-
-
-
 // ----- View engine (EJS) -----
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -32,19 +25,29 @@ app.set("view engine", "ejs");
 // ----- Middleware -----
 app.use(logger("dev"));
 
+// CORS — allow any origin
+app.use(function (req, res, next) {
+  res.set("Access-Control-Allow-Origin", "*");
+  res.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.set("Access-Control-Allow-Headers", "Content-Type");
+  if (req.method === "OPTIONS") return res.sendStatus(204);
+  next();
+});
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-// ----- In-memory storage (no database) -----
-// This was the assignment 2. In current assignment, I use database
-// app.locals.meetings = app.locals.meetings || []; // array of meeting objects
-
 // ----- Routes -----
 app.use("/", indexRouter);
 app.use("/meetings", meetingsRouter);
+app.use("/api/meetings", apiMeetingsRouter);
 
 // ----- 404 handler -----
 app.use(function (req, res, next) {
