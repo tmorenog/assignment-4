@@ -1,0 +1,23 @@
+<h1><%= title %></h1>
+
+<form method="POST" action="/meetings/<%= meeting._id %>">
+  <p>
+    <label>Meeting title</label><br />
+    <input type="text" name="title" value="<%= meeting.title %>" required />
+  </p>
+
+  <p>
+    <label>Video URL</label><br />
+    <input type="url" name="videoUrl" value="<%= meeting.videoUrl %>" required />
+  </p>
+
+  <p>
+    <label>Meeting date (optional)</label><br />
+    <input type="date" name="meetingDate"
+      value="<%= meeting.meetingDate ? meeting.meetingDate.toISOString().split('T')[0] : '' %>" />
+  </p>
+
+  <button type="submit">Save changes</button>
+</form>
+
+<p><a href="/">Back to home</a></p>

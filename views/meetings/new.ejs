@@ -1,0 +1,22 @@
+<h1><%= title %></h1>
+
+<form method="POST" action="/meetings">
+  <p>
+    <label>Meeting title</label><br />
+    <input type="text" name="title" required />
+  </p>
+
+  <p>
+    <label>Video URL</label><br />
+    <input type="url" name="videoUrl" required />
+  </p>
+
+  <p>
+    <label>Meeting date (optional)</label><br />
+    <input type="date" name="meetingDate" />
+  </p>
+
+  <button type="submit">Add meeting</button>
+</form>
+
+<p><a href="/">Back to home</a></p>

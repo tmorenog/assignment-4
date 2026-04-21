@@ -1,0 +1,32 @@
+<h1><%= title %></h1>
+
+<p>
+This prototype will collect Brookline Town Meeting video links.
+</p>
+
+<p>
+  <a href="/meetings/new">Add a meeting video</a>
+</p>
+
+<h2>Meetings</h2>
+
+<ul>
+  <% if (meetings.length === 0) { %>
+    <li>No meetings added yet.</li>
+  <% } %>
+
+  <% meetings.forEach(function(m) { %>
+    <li>
+      <strong><%= m.title %></strong><br />
+      <% if (m.meetingDate) { %>
+        Date: <%= m.meetingDate %><br />
+      <% } %>
+      <a href="<%= m.videoUrl %>" target="_blank" rel="noreferrer"><%= m.videoUrl %></a>
+      <a href="/meetings/<%= m._id %>/edit">Edit</a>
+
+<form method="POST" action="/meetings/<%= m._id %>/delete" style="display:inline;">
+  <button type="submit">Delete</button>
+</form>
+    </li>
+  <% }) %>
+</ul>

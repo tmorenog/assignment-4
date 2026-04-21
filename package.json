@@ -1,0 +1,25 @@
+{
+  "name": "assignment-3-an-express-application-tmorenog",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Assignment 3: CRUD for Brookline Town Meeting video transcription workflow",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon --inspect ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "debug": "^4.3.7",
+    "dotenv": "^17.3.1",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "http-errors": "^2.0.0",
+    "mongodb": "^7.1.1",
+    "mongoose": "^8.9.5",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
