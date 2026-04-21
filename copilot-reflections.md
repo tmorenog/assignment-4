@@ -112,6 +112,7 @@ Asked Claude to update the README to reflect Assignment 4's additions.
 **What I learned**
 - Asking for "additive" documentation changes (don't rewrite, just add) is a useful framing. I got a consistent README instead of a reformatted one.
 ---
+
 ## Summarizing prompts
 
 I also asked Claude to summarize all the prompts I used during the sessions to assist me with accurate reporting in this file
