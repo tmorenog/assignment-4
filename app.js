@@ -17,6 +17,14 @@ mongoose.connect(process.env.MONGODB_URI)
 
 const app = express();
 
+// For assignment 4, require our new api router module
+const apimeetings = require('./routes/api/api-meetings');
+
+// install it as middleware
+app.use('/api/meetings', apimeetings);
+
+
+
 // ----- View engine (EJS) -----
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
